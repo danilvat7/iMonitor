@@ -1,0 +1,57 @@
+<div class="statuses-legend">
+  <div class="legend-item">
+    Working: <div class="link-status is-work"></div>
+  </div>
+
+  <div class="legend-item">
+    Puased: <div class="link-status is-paused"></div>
+  </div>
+
+  <div class="legend-item">
+    Failed:<div class="link-status is-failed"></div>
+  </div>
+</div>
+
+<mat-card *ngFor="let compain of data">
+
+  <h3>{{compain.CampaignName}}</h3>
+
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{compain.Url}}
+        </mat-panel-title>
+        <mat-panel-description>
+          <div class="description">{{compain.Explanation}}</div>
+          <div class="link-status" [class.is-work]="!compain.IsPaused && !compain.IsFailed"
+            [class.is-paused]="compain.IsPaused" [class.is-failed]="compain.IsFailed"></div>
+        </mat-panel-description>
+
+
+      </mat-expansion-panel-header>
+      <mat-list role="list">
+        <mat-list-item role="listitem" *ngFor="let historyChanges of compain.History"
+          [class.hidden]="!historyChanges.ModifiedAt">
+          <div class="history-item">
+            <div class="link-status" [class.is-paused]="historyChanges.IsPaused"
+              [class.is-failed]="historyChanges.IsFailed"></div>
+            <div class="data">{{historyChanges.ModifiedAt}}</div>
+
+
+          </div>
+
+        </mat-list-item>
+      </mat-list>
+
+      <div class="actions-wrapper">
+        <button mat-raised-button color="primary" *ngIf="compain.IsPaused"
+          (click)="onResumeClick(compain.Id)">Resume</button>
+        <button mat-raised-button color="warn" *ngIf="!compain.IsPaused"
+          (click)="onStopClick(compain.Id)">Pause</button>
+      </div>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+</mat-card>

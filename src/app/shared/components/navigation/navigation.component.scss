@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  align-items: center;
+
+  .logo {
+    cursor: pointer;
+  }
+
+  .nav-wrapper {
+    .mat-nav-list {
+      margin: 0 0 7px 30px;
+      display: flex;
+
+      .active {
+        color: #fff;
+      }
+    }
+  }
+}

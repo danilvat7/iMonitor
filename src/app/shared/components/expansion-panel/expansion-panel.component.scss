@@ -1,0 +1,67 @@
+.link-status {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ccc;
+
+  &.is-work {
+    background: green;
+  }
+
+  &.is-paused {
+    background: orange;
+  }
+
+  &.is-failed {
+    background: red;
+  }
+}
+
+.actions-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 0;
+
+  button {
+    margin-left: 15px;
+  }
+}
+
+.mat-expansion-panel-header-description {
+  flex-grow: 1;
+  justify-content: space-between;
+  margin-right: 30px;
+}
+
+.mat-card {
+  margin-bottom: 30px;
+}
+
+.history-item {
+  display: flex;
+
+  .link-status {
+    margin-right: 25px;
+  }
+}
+
+.statuses-legend {
+  display: flex;
+  margin-bottom: 40px;
+  font-size: 25px;
+  line-height: 27px;
+
+  .legend-item {
+    display: flex;
+    margin-right: 30px;
+    align-items: center;
+  }
+
+  .link-status {
+    margin-left: 15px;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
